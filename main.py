@@ -8,11 +8,11 @@ app = Flask(__name__)
 
 def read_data():
     # Database connection logic
-    server = os.environ('SERVER')
-    database = os.environ('DATABASE')
-    username = os.environ('USER')
-    password = os.environ('PASSWORD')
-    driver= os.environ('DRIVER')
+    server = os.environ.get('SERVER')
+    database = os.environ.get('DATABASE')
+    username = os.environ.get('USER')
+    password = os.environ.get('PASSWORD')
+    driver= os.environ.get('DRIVER')
     cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
     # Read data from sql connection into a pandas dataframe, output to json
     neg = "SELECT created_at, author, tweet_text, sentiment FROM negative_sentiment"
