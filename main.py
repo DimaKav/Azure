@@ -22,11 +22,12 @@ def read_data():
     pos = pd.read_sql(pos, cnxn)
     neg = pd.read_sql(neg, cnxn)
     df = pd.concat([pos,neg],0)
-    return df.sort_values(['sentiment','created_at'])[:10].to_html(index=False)
+#     return df.sort_values(['sentiment','created_at'])[:10].to_html(index=False)
+    return df.sort_values(['sentiment','created_at'])[:10].to_json(orient='records')
 
 @app.route("/")
 def hello():
-    return read_data()
+    return str(read_data())
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
