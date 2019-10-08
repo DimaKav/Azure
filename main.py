@@ -10,7 +10,7 @@ def read_data():
     # Database connection logic
     server = os.environ('SERVER')
     database = os.environ('DATABASE')
-    username = os.environ('USERNAME')
+    username = os.environ('USER')
     password = os.environ('PASSWORD')
     driver= os.environ('DRIVER')
     cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
